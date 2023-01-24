@@ -1,10 +1,17 @@
 
 import '../App.css';
+// import { Route, Routes } from "react-router-dom";
+import NavBar from './NavBar';
+import Home from './Home'
+// import Library from './Library';
+
 
 function App() {
   return (
-    <div className="App">
-         <h1 className='bg-danger fst-italic fw-bolder text-primary' >READRIOT</h1>
+    <div className="">
+        <NavBar />
+         <Home />
+         {/* <Library /> */}
     </div>
   );
 }
