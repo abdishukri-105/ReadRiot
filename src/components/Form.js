@@ -1,6 +1,6 @@
 const Form = () => {
     return ( 
-        Form
+        home
      );
 }
  
