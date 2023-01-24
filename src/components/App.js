@@ -8,9 +8,9 @@ import Library from './Library';
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div className="">
          <NavBar />
-        {/* <Home /> */}
+        {/* <Home /> */} 
          <Library /> 
     </div>
   );

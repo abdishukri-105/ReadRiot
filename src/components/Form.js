@@ -13,7 +13,7 @@ const Form = () => {
             <label for="description">Description</label>
             <textarea class="form-control" id="description" rows="2"></textarea>
         </div>
-        <button type="submit" class="btn btn-outline-primary block">add book to shelf</button>
+        <button type="submit" class="btn btn-outline-warning block">add book to shelf</button>
     </form>
 
      );
