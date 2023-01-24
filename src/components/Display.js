@@ -1,7 +1,7 @@
 const Display = () => {
     return ( 
         <div>
-             display
+             
         </div>
      );
 }

@@ -6,10 +6,10 @@ import Shelf from "./Shelf";
 
 const Library = () => {
     return ( 
-        <div className="container-fluid ">
+        <div className="container ">
        
           <div className="d-flex justify-content-between mt-4">
-           <div className="col-6  ">
+           <div className="col-5  ">
              <Search />
              <Display />
             </div>
