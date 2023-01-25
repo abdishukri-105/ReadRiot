@@ -41,24 +41,6 @@ fetch('/db.json')
   .catch(err => console.log(err));
 
 
-  
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const history = useHistory();
-
-  useEffect(() => {
-      if (isAuthenticated) {
-          history.push("/library");
-      }
-  }, [isAuthenticated, history]);
-
-  const handleSignIn = (event) => {
-      event.preventDefault();
-      // your signin logic
-      setIsAuthenticated(true);
-  }
-
-  
 
 
   return (
