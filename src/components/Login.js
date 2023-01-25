@@ -42,6 +42,22 @@ fetch('/db.json')
 
 
   
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+      if (isAuthenticated) {
+          history.push("/library");
+      }
+  }, [isAuthenticated, history]);
+
+  const handleSignIn = (event) => {
+      event.preventDefault();
+      // your signin logic
+      setIsAuthenticated(true);
+  }
+
   
 
 
@@ -54,7 +70,7 @@ fetch('/db.json')
             <FormGroup>
               <Label for="username"></Label>
               <Col xs="12" md={{ size: 6, offset: 3 }}>
-   <Input type="text" placeholder="username" required onChange={e => setUsername(e.target.value)} />
+               <Input type="text" placeholder="username" required onChange={e => setUsername(e.target.value)} />
               </Col>
             </FormGroup>
             <FormGroup>
