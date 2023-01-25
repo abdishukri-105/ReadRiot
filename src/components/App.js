@@ -6,6 +6,7 @@ import Home from './Home'
 import Shelf from "./Shelf"
 // import Library from './Library';
 import Search from "./Search"
+import Login from './Login';
 // import {useState} from 'react'
 
 
@@ -25,13 +26,15 @@ function App() {
   //   }
   // }
   return (
-    <div className="">
-       <NavBar />
+    
+    <>
+       {/* <NavBar />
        <Home/>
-       <Search />
+       <Search /> */}
+       <Login/>
       
       
-    </div>
+    </>
   );
 }
 export default App;

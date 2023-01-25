@@ -3,9 +3,37 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reac
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+const userDetails = {}
+
+
 
 function Login() {
+  const [signUpDetails, setSignUpDetails] = useState(userDetails);
   const [showSignUp, setShowSignUp] = useState(false);
+  function handleSignUpDetails(e){
+   userDetails[e.target.name]= e.target.value
+    setSignUpDetails(userDetails)
+    console.log(signUpDetails)
+    
+
+  }
+  function sendToDatabase(){
+    console.log(signUpDetails)
+    fetch("http://localhost:3002/users", {
+      method: "POST",
+      body: JSON.stringify(signUpDetails),
+      headers: {
+        "Content-Type": "application/json"
+      }
+
+
+    })
+    .then(res=>res.json())
+    .then(res=>console.log(res))
+
+    
+  }
+  
 
   const handleClick = () => {
     setShowSignUp(!showSignUp);
@@ -22,23 +50,24 @@ function Login() {
       setShowSignUp(true);
     }
   }
+  
 
-  const newUser = {username: "newUser", password: "newPass"};
+  // const newUser = {username: "newUser", password: "newPass"};
 
-fetch('/db.json', {
-  method: 'POST',
-  body: JSON.stringify(newUser),
-  headers: { 'Content-Type': 'application/json' }
-})
-.then(res => res.json())
-.then(data => console.log(data))
-.catch(err => console.log(err));
+//fetch('/db.json', {
+ // method: 'POST',
+  //body: JSON.stringify(newUser),
+ // headers: { 'Content-Type': 'application/json' }
+//})
+//.then(res => res.json())
+//.then(data => console.log(data))
+//.catch(err => console.log(err));
 
 
-fetch('/db.json')
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
+//fetch('/db.json')
+  //.then(res => res.json())
+  //.then(data => console.log(data))
+ // .catch(err => console.log(err));
 
 
 
@@ -92,7 +121,7 @@ fetch('/db.json')
                 <Label for="username"></Label>
 
                 <Col xs="12" md={{ size: 6 }}>
-                <Input type="text" placeholder="User Name" id="username" required className='form-control' />
+                <Input type="text" name="username" placeholder="User Name" id="username" required className='form-control' onChange={(e)=>handleSignUpDetails(e)} />
                 </Col>
                
               </FormGroup>
@@ -100,7 +129,7 @@ fetch('/db.json')
                 <Label for="email"></Label>
 
                 <Col xs="12" md={{ size: 6 }}>
-                <Input type="email" placeholder="Email" id="email" required className='form-control'/>
+                <Input type="email" name="email" placeholder="Email" id="email" required className='form-control' onChange={(e)=>handleSignUpDetails(e)}/>
                 </Col>
                 
               </FormGroup>
@@ -108,13 +137,13 @@ fetch('/db.json')
                 <Label for="password"></Label>
 
                 <Col xs="12" md={{ size: 6 }}>
-                <Input type="password" placeholder="Password" id="password" required className='form-control' />
+                <Input type="password" name="password" placeholder="Password" id="password" required className='form-control' onChange={(e)=>handleSignUpDetails(e)} />
                 </Col>
                 
               </FormGroup>
 
               
-              <Button color="success" className="btn-block">Sign Up</Button>
+              <Button color="success" className="btn-block" onClick={()=>sendToDatabase()}>Sign Up</Button>
               
             </Form>
           </Col>
@@ -123,7 +152,7 @@ fetch('/db.json')
 
     </Container>
   );
-}
+      }
 
 export default Login;
 
