@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom"
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -21,13 +22,13 @@ const Search = () => {
             {result.volumeInfo.imageLinks && (
             <img src={result.volumeInfo.imageLinks.smallThumbnail  } alt={result.volumeInfo.title} className="card-img-top  img-fluid"  />
           )}
-        <div className='card-body '>
+        <div className='card-body'>
           <h5 className='card-title'>{result.volumeInfo.title}</h5>
-          <p className='card-text'> Author: :{ result.volumeInfo.authors}</p>
+          <p className='card-text'> author: { result.volumeInfo.authors}</p>
           <p className='card-text'> {result.searchInfo.textSnippet}</p>
           <div className='d-flex justify-content-between'>
           <a className='card-text btn btn-outline-dark' target='_blank' href={result.volumeInfo.previewLink}>buy book</a>
-          <button className='btn btn-outline-dark'>add to shelf</button>
+           <Link to = "/shelf"><button className='btn btn-outline-dark'>add to shelf</button></Link> 
           </div>
         </div>
         </div>
@@ -64,15 +65,3 @@ const Search = () => {
 export default Search;
 
 
-// const Search = () => {
-//     return ( 
-//     <form className="d-flex ">
-//      <div class="form-group col-6 m-2 ">
-//       <input type="text" class="form-control" id="searchInput" placeholder="Enter book name"/>
-//      </div>
-//      <button type="submit" class="btn btn-outline-warning m-2">Submit</button>
-//     </form>
-//      );
-// }
- 
-// export default Search;

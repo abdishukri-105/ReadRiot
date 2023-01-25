@@ -1,12 +1,11 @@
-// import { Routes , Route} from 'react-router-dom'
+import {BrowserRouter, Routes , Route} from 'react-router-dom'
 import '../App.css';
-// import { Route, Routes } from "react-router-dom";
 import NavBar from './NavBar';
 import Home from './Home'
 import Shelf from "./Shelf"
-// import Library from './Library';
 import Search from "./Search"
-// import {useState} from 'react'
+import Regester from "./Regester"
+
 
 
 function App() {
@@ -26,9 +25,19 @@ function App() {
   // }
   return (
     <div className="">
-       <NavBar />
-       <Home/>
-       <Search />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="/Shelf" element={<Shelf />} />
+           <Route path="/search" element={<Search />} />
+           <Route path="/regester" element={<Regester />} />
+        </Routes>
+      
+      
+      
+      </BrowserRouter>
+     
       
       
     </div>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from "react-router-dom"
 
 
-
-function Login() {
+function Regester() {
   const [showSignUp, setShowSignUp] = useState(false);
 
   const handleClick = () => {
@@ -113,9 +113,9 @@ fetch('/db.json')
                 
               </FormGroup>
 
-              
-              <Button color="success" className="btn-block">Sign Up</Button>
-              
+              <Link to = "/search">
+                <Button color="success" className="btn-block">Sign Up</Button>
+              </Link>
             </Form>
           </Col>
         </Row>
@@ -125,5 +125,5 @@ fetch('/db.json')
   );
 }
 
-export default Login;
+export default Regester;
 

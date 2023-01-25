@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 const NavBar = () => {
     return ( 
       
@@ -6,16 +6,18 @@ const NavBar = () => {
       <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-warning d-flex justify-content-between">
         <div className="d-flex">
           <img src="./images/logo.png" alt="logo" className="ms-5 me-3" style={{ width: "60px", height: "40px" }} />
-          <a class="navbar-brand  fw-bolder" href="#">READRIOT</a>
+          <a class="navbar-brand  fw-bolder" >READRIOT</a>
           <div className="ms-5 d-flex m-2 fw-bold">
           <NavLink to="/"  exact className="nav-link me-5">HOME</NavLink>
           <NavLink to="/search"  exact className="nav-link me-5">Search</NavLink>
-          <NavLink to="/shelf"  exact className="nav-link">Shelf</NavLink>
+          <NavLink to="/shelf"  exact className="nav-link me-5">Shelf</NavLink>
+          <NavLink to="/regester"  exact className="nav-link">Regester</NavLink>
           </div>
         </div>
         <div class=" me-5" id=""> 
-        
+        <Link to = "/">
            <button class="btn btn-outline-dark" href="#">Logout</button>
+         </Link>
         </div>
       </nav>
         
