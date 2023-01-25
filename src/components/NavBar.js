@@ -8,10 +8,10 @@ const NavBar = () => {
           <img src="./images/logo.png" alt="logo" className="ms-5 me-3" style={{ width: "60px", height: "40px" }} />
           <a class="navbar-brand  fw-bolder" >READRIOT</a>
           <div className="ms-5 d-flex m-2 fw-bold">
-          <NavLink to="/"  exact className="nav-link me-5">HOME</NavLink>
-          <NavLink to="/search"  exact className="nav-link me-5">Search</NavLink>
-          <NavLink to="/shelf"  exact className="nav-link me-5">Shelf</NavLink>
-          <NavLink to="/regester"  exact className="nav-link">Regester</NavLink>
+            <NavLink to="/"  exact className="nav-link me-5">HOME</NavLink>
+            <NavLink to="/search"  exact className="nav-link me-5">Search</NavLink>
+            <NavLink to="/shelf"  exact className="nav-link me-5">Shelf</NavLink>
+            <NavLink to="/regester"  exact className="nav-link">Regester</NavLink>
           </div>
         </div>
         <div class=" me-5" id=""> 
