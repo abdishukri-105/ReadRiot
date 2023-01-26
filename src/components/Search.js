@@ -48,6 +48,7 @@ const Search = () => {
         }
         return 0;
       });
+      
     setResults(filteredResults);
   }, [searchInput, allResults]);
 
