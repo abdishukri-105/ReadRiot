@@ -1,0 +1,6 @@
+.homePage{
+    background-image: linear-gradient(rgba(184, 184, 184, 0.3), rgba(184, 184, 184, 0.3)), url('../../public/images/bg.jpg');
+    width: 100%;
+    height: 100vh;
+    color: white;
+}

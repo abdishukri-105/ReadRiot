@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import Home from './Home';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button, NavLink } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const userDetails = {}
 
 
-
-function Login() {
+function Login({setLogIn}) {
   const [signUpDetails, setSignUpDetails] = useState(userDetails);
   const [showSignUp, setShowSignUp] = useState(false);
+
   function handleSignUpDetails(e){
    userDetails[e.target.name]= e.target.value
     setSignUpDetails(userDetails)
@@ -32,6 +34,26 @@ function Login() {
     .then(res=>console.log(res))
 
     
+  }
+
+  function submitLogIn(e) {
+    e.preventDefault()
+    let username = e.target.username.value;
+    let password = e.target.password.value;
+
+    fetch('http://localhost:3002/users')
+      .then(res => res.json())
+      .then(res => {
+        const filteredResults = res.filter(element => {
+          return element.username == username && element.password == password;
+        })
+
+        if (!filteredResults.length) {
+          console.log("Username or password incorrect");
+        } else {
+          setLogIn(true);
+        }
+      })
   }
   
 
@@ -73,22 +95,23 @@ function Login() {
 
 
   return (
-    <Container>
+    <>
+      <Container>
       <Row>
         <Col xs="12" md={{ size: 6, offset: 3 }} className={showSignUp ? "d-none" : ""}>
-          <Form>
+          <Form onSubmit={(e)=> submitLogIn(e)}>
             <h2 className="text-center">Sign In</h2>
             <FormGroup>
               <Label for="username"></Label>
               <Col xs="12" md={{ size: 6, offset: 3 }}>
-               <Input type="text" placeholder="username" required onChange={e => setUsername(e.target.value)} />
+               <Input type="text" name="username" placeholder="username" required onChange={e => setUsername(e.target.value)} />
               </Col>
             </FormGroup>
             <FormGroup>
               <Label for="password"></Label>
 
               <Col xs="12" md={{ size: 6, offset: 3 }}>
-              <Input type="password" placeholder="password" id="password" required onChange={e => setPassword(e.target.value)} />
+              <Input type="password" name="password" placeholder="password" id="password" required onChange={e => setPassword(e.target.value)} />
               </Col>
               
             </FormGroup>
@@ -99,7 +122,7 @@ function Login() {
             </FormGroup>
 
             <div className="d-flex justify-content-center">
-  <Button color="primary" className="btn-block" onClick={handleLogin}>Sign In</Button>
+  <Button color="primary" className="btn-block" >Sign In</Button>
 </div>
 
             <br></br>
@@ -150,7 +173,9 @@ function Login() {
         </Row>
       ) : null }
 
-    </Container>
+      </Container>
+    </>
+    
   );
       }
 
