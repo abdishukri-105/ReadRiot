@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 import Home from './Home'
 import Shelf from "./Shelf"
 import Search from "./Search"
-import Regester from "./Regester"
+import Register from "./Register"
 
 
 function App() {
@@ -23,6 +23,13 @@ const addToShelf = (result) => {
   console.log(newresult)
 
 }
+
+const removeFromShelf =(id) => {
+  const oldresult = [...shelf]
+  const newresult = oldresult.filter(result => result.id !== id)
+  setShelf(newresult)
+  console.log(newresult)
+}
  
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +38,7 @@ const addToShelf = (result) => {
         `https://www.googleapis.com/books/v1/volumes?q=books+&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`
       );
       const data = await response.json();
+      console.log(data);
       setAllResults(data.items);
       setResults(data.items);
       setIsLoading(false);
@@ -81,9 +89,9 @@ useEffect(() => {
         <NavBar />
         <Routes>
            <Route path="/" element={<Home />} />
-           <Route path="/Shelf" element={<Shelf shelf={shelf} />} />
+           <Route path="/Shelf" element={<Shelf shelf={shelf} removeFromShelf ={ removeFromShelf} />} />
            <Route path="/search" element={<Search results={results} searchInput={searchInput} handleSearchInput = {handleSearchInput}  isLoading = {isLoading} addToShelf={addToShelf}/>} />
-           <Route path="/regester" element={<Regester />} />
+           <Route path="/register" element={<Register />} />
         </Routes>
      
       </BrowserRouter>

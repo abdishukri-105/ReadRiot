@@ -1,8 +1,5 @@
 
-
 const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) => {
-  
-
 
   return (
     <div>
@@ -22,18 +19,21 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          <div className=' d-flex  row mb-3 '>
+          <div className=' d-flex  row  mb-3 '>
             {results.map((result) => (
-              <div key={result.id}  className= "card mb-5 me-3 bg-warning" style={{width: "21rem"}} >
+              <div key={result.id}  className= "card mb-5 me-4 bg-warning" style={{width: "21rem"}} >
                   {result.volumeInfo.imageLinks && (
                   <img src={result.volumeInfo.imageLinks.smallThumbnail  } alt={result.volumeInfo.title} className="card-img-top  img-fluid"  />
                 )}
               <div className='card-body '>
-                <h5 className='card-title'>{result.volumeInfo.title}</h5>
-                <p className='card-text'> Author: :{ result.volumeInfo.authors}</p>
-<p className='card-text'> {result.volumeInfo.description}</p>
+                <div className="d-flex justify-content-between">
+                   <h5 className='card-title'>{result.volumeInfo.title}</h5>
+                   <p className="badge  bg-dark text-light"> pages: {result.volumeInfo.pageCount}</p>
+                </div>
+                   <p className='card-text'> { result.volumeInfo.authors}</p>
+                   <p className='card-text'> {result.searchInfo.textSnippet}</p>
                 <div className='d-flex justify-content-between'>
-                <a className='card-text btn btn-outline-dark' target='_blank' href={result.volumeInfo.previewLink}>buy book</a>
+                 <a className='card-text btn btn-outline-dark' target='_blank' href={result.volumeInfo.previewLink}>buy book</a>
                 <button className='btn btn-outline-dark' onClick={() => addToShelf(result)}>add to shelf</button>
             </div>
           </div>

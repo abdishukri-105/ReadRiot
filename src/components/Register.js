@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom"
 
 
-function Regester() {
+function Register() {
   const [showSignUp, setShowSignUp] = useState(false);
 
   const handleClick = () => {
@@ -125,5 +125,5 @@ fetch('/db.json')
   );
 }
 
-export default Regester;
+export default Register;
 
