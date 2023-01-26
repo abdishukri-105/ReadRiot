@@ -17,7 +17,7 @@ const NavBar = () => {
         <div class=" me-5" id=""> 
         <Link to = "/">
            <button class="btn btn-outline-dark" href="#">Logout</button>
-         </Link>
+        </Link>
         </div>
       </nav>
         

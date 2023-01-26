@@ -4,16 +4,18 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
   return (
     <div>
       <form className="d-flex mt-4 justify-content-center mb-5">
-        <div className="form-group col-8 m-2">
+        <div className="form-group d-flex  col-9 m-2">
           <input
             type="text"
-            className="form-control"
+            className="form-control me-3"
             id="searchInput"
             placeholder="Enter book name e.g harry potter"
             value={searchInput}
             onChange={handleSearchInput}
           />
+          <button className="btn btn-outline-warning">search</button>
         </div>
+        
       </form>
       <div className='container'>
         {isLoading ? (
