@@ -1,3 +1,4 @@
+// import '../App.css';
 
 const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) => {
 
@@ -17,11 +18,11 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
         </div>
         
       </form>
-      <div className='container'>
+      <div className='container-search'>
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          <div className=' d-flex  row  mb-3 '>
+          <div className=' d-flex  row  mb-3 card-section '>
             {results.map((result) => (
               <div key={result.id}  className= "card mb-5 me-4 bg-warning" style={{width: "21rem"}} >
                   {result.volumeInfo.imageLinks && (
@@ -44,6 +45,7 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
       </div>
     )}
   </div>
+
 </div>
 );
 };

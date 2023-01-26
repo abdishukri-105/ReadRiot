@@ -1,0 +1,19 @@
+.container-search{
+    background-color: rgb(235, 224, 112);
+
+}
+
+.card-section{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem;
+    
+}
+
+.books-holder{
+    border-radius: 1rem;
+    margin: 1rem;
+    width: 10rem;
+    height: 14rem;
+}
+

@@ -87,13 +87,14 @@ useEffect(() => {
       <BrowserRouter>
     
         <NavBar />
+        
         <Routes>
            <Route path="/" element={<Home />} />
            <Route path="/Shelf" element={<Shelf shelf={shelf} removeFromShelf ={ removeFromShelf} />} />
            <Route path="/search" element={<Search results={results} searchInput={searchInput} handleSearchInput = {handleSearchInput}  isLoading = {isLoading} addToShelf={addToShelf}/>} />
            <Route path="/register" element={<Register />} />
         </Routes>
-     
+       
       </BrowserRouter>
      
       
