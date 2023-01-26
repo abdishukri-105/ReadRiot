@@ -30,8 +30,7 @@ const Search = () => {
     setIsLoading(false);
   }
 
-  
-useEffect(() => {
+  useEffect(() => {
     const filteredResults = allResults
       .filter(result =>
         result.volumeInfo.title.toLowerCase().includes(searchInput.toLowerCase())
@@ -65,6 +64,13 @@ useEffect(() => {
             onChange={handleSearchInput}
           />
         </div>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => setResults(allResults)}
+        >
+          Search
+        </button>
       </form>
       <div className='container'>
         {isLoading ? (
