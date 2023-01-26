@@ -6,6 +6,7 @@ const Search = () => {
   const [allResults, setAllResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
