@@ -30,6 +30,7 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
                    <h5 className='card-title'>{result.volumeInfo.title}</h5>
                    <p className="badge  bg-dark text-light"> pages: {result.volumeInfo.pageCount}</p>
                 </div>
+                
                    <p className='card-text'> { result.volumeInfo.authors}</p>
                    <p className='card-text'> {result.searchInfo.textSnippet}</p>
                 <div className='d-flex justify-content-between'>
