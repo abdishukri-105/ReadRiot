@@ -1,55 +1,7 @@
-import React, { useState, useEffect } from 'react';
 
-const Search = () => {
-  const [searchInput, setSearchInput] = useState('');
-  const [results, setResults] = useState([]);
-  const [allResults, setAllResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=books+&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`
-      );
-      const data = await response.json();
-      setAllResults(data.items);
-      setResults(data.items);
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
-
-  const handleSearchInput = async event => {
-    setSearchInput(event.target.value);
-    setIsLoading(true);
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${event.target.value}&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`);
-    const data = await response.json();
-    setAllResults(data.items);
-    setResults(data.items);
-    setIsLoading(false);
-  }
-
+const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) => {
   
-useEffect(() => {
-    const filteredResults = allResults
-      .filter(result =>
-        result.volumeInfo.title.toLowerCase().includes(searchInput.toLowerCase())
-      )
-      .sort((a, b) => {
-        const titleA = a.volumeInfo.title.toLowerCase();
-        const titleB = b.volumeInfo.title.toLowerCase();
-        const search = searchInput.toLowerCase();
-        if (titleA.startsWith(search) && !titleB.startsWith(search)) {
-          return -1;
-        }
-        if (!titleA.startsWith(search) && titleB.startsWith(search)) {
-          return 1;
-        }
-        return 0;
-      });
-    setResults(filteredResults);
-  }, [searchInput, allResults]);
 
 
   return (
@@ -82,7 +34,7 @@ useEffect(() => {
 <p className='card-text'> {result.volumeInfo.description}</p>
                 <div className='d-flex justify-content-between'>
                 <a className='card-text btn btn-outline-dark' target='_blank' href={result.volumeInfo.previewLink}>buy book</a>
-                <button className='btn btn-outline-dark'>add to shelf</button>
+                <button className='btn btn-outline-dark' onClick={() => addToShelf(result)}>add to shelf</button>
             </div>
           </div>
           </div>

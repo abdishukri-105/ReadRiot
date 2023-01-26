@@ -12,10 +12,17 @@ function App() {
 
   const [searchInput, setSearchInput] = useState('');
   const [results, setResults] = useState([]);
+  const [shelf, setShelf] = useState([]);
   const [allResults, setAllResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+const addToShelf = (result) => {
+    const oldresult = [...shelf]
+    const newresult = [...oldresult, result]
+  setShelf(newresult)
+  console.log(newresult)
 
+}
  
   useEffect(() => {
     const fetchData = async () => {
@@ -74,8 +81,8 @@ useEffect(() => {
         <NavBar />
         <Routes>
            <Route path="/" element={<Home />} />
-           <Route path="/Shelf" element={<Shelf />} />
-           <Route path="/search" element={<Search results={results} searchInput={searchInput} handleSearchInput = {handleSearchInput}  isLoading = {isLoading}/>} />
+           <Route path="/Shelf" element={<Shelf shelf={shelf} />} />
+           <Route path="/search" element={<Search results={results} searchInput={searchInput} handleSearchInput = {handleSearchInput}  isLoading = {isLoading} addToShelf={addToShelf}/>} />
            <Route path="/regester" element={<Regester />} />
         </Routes>
      
