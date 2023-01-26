@@ -57,7 +57,6 @@ fetch('/db.json')
             </FormGroup>
             <FormGroup>
               <Label for="password"></Label>
-
               <Col xs="12" md={{ size: 6, offset: 3 }}>
               <Input type="password" placeholder="password" id="password" required onChange={e => setPassword(e.target.value)} />
               </Col>
