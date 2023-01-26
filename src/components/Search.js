@@ -66,7 +66,7 @@ const Search = () => {
         </div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-outline-warning m-2"
           onClick={() => setResults(allResults)}
         >
           Search
