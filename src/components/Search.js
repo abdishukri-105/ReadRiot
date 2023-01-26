@@ -52,6 +52,7 @@ const Search = () => {
     setResults(filteredResults);
   }, [searchInput, allResults]);
 
+  
 
   return (
     <div>
