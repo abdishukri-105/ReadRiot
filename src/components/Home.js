@@ -1,6 +1,24 @@
 import {Link} from "react-router-dom"
+import {useState} from 'react'
 
 const Home = () => {
+
+  
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [formValid, setFormValid] = useState(false);
+
+
+  const validateForm = () => {
+    if (username.length > 0 && password.length > 0) {
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+    }
+  }
+  
+
+
 
 return (
    <div className="">
@@ -22,16 +40,26 @@ return (
         <form className="col-8  ms-5">
          <div class="form-group mb-3">
           <label for="username " className="mb-2 fw-bold">Username</label>
-          <input type="text" class="form-control" id="username" placeholder="Enter username" required/>
+          <input type="text" class="form-control" id="username" placeholder="Enter username"
+            value={username}
+            onChange={e => {setUsername(e.target.value); validateForm()}} required/>
         </div>
         <div class="form-group mb-3">
           <label for="password" className="mb-2 fw-bold">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter password" required/>
+          <input type="password" class="form-control" id="password" placeholder="Enter password" 
+            value={password}
+            onChange={e => {setPassword(e.target.value); validateForm()}}required/>
         </div>
+          
+
+       <div className="d-flex">  
+        <button className="btn btn-outline-warning me-4 mb-4" disabled={!formValid}> SIGN IN</button> 
+
         <Link to ="/search">
-           <button className="btn btn-outline-warning mb-4"> SIGN IN</button> 
-         </Link>
+          <p>  <a className=" btn-outline-warning " disabled={!formValid}> dive in</a> </p>
          
+        </Link>
+        </div> 
          <p className="fw-bold">Dont have account? 
             <Link to="/register">
               <button className="btn btn-outline-warning ms-3">sign up</button> 

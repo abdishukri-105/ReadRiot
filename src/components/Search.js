@@ -1,4 +1,5 @@
 import '../App.css';
+import {Link} from "react-router-dom"
 
 const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) => {
 
@@ -37,7 +38,9 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
                    {/* <p className='card-text'> {result.searchInfo.textSnippet}</p> */}
                 <div className=' d-flex justify-content-between'>
                  <a className=' btn btn-outline-dark' target='_blank' href={result.volumeInfo.previewLink}>see more</a>
+                 <Link to="/shelf">
                 <button className=' btn btn-outline-dark' onClick={() => addToShelf(result)}>add to shelf</button>
+                </Link>
             </div>
           </div>
           </div>
