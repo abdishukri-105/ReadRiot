@@ -20,7 +20,7 @@
 .book-holder{
     object-fit: contain;
     width: 21rem;
-    height: 25rem;
+    /* height: 25rem; */
 }
 
 .card-image:hover {
