@@ -16,20 +16,20 @@ function App() {
   const [allResults, setAllResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-const addToShelf = (result) => {
+  const addToShelf = (result) => {
     const oldresult = [...shelf]
     const newresult = [...oldresult, result]
-  setShelf(newresult)
-  console.log(newresult)
+    setShelf(newresult)
+    console.log(newresult)
 
-}
+  }
 
-const removeFromShelf =(id) => {
-  const oldresult = [...shelf]
-  const newresult = oldresult.filter(result => result.id !== id)
-  setShelf(newresult)
-  console.log(newresult)
-}
+  const removeFromShelf =(id) => {
+    const oldresult = [...shelf]
+    const newresult = oldresult.filter(result => result.id !== id)
+    setShelf(newresult)
+    console.log(newresult)
+  }
  
   useEffect(() => {
     const fetchData = async () => {
@@ -59,8 +59,8 @@ const removeFromShelf =(id) => {
 
 
     
-useEffect(() => {
-  const filteredResults = allResults
+  useEffect(() => {
+   const filteredResults = allResults
     .filter(result =>
       result.volumeInfo.title.toLowerCase().includes(searchInput.toLowerCase())
     )
@@ -76,8 +76,8 @@ useEffect(() => {
       }
       return 0;
     });
-  setResults(filteredResults);
-}, [searchInput, allResults]);
+    setResults(filteredResults);
+  }, [searchInput, allResults]);
 
 
 
@@ -96,8 +96,6 @@ useEffect(() => {
         </Routes>
        
       </BrowserRouter>
-     
-      
       
     </div>
   );

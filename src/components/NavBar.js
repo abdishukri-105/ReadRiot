@@ -1,8 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
+
 const NavBar = () => {
     return ( 
-      
-    
+
       <nav class="navbar sticky-top  navbar-light bg-warning d-flex justify-content-between">
         <div className="d-flex">
           <img src="./images/logo.png" alt="logo" className="ms-5 me-3" style={{ width: "60px", height: "40px" }} />
