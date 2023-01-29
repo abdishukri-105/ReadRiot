@@ -13,9 +13,25 @@ function App() {
   const [searchInput, setSearchInput] = useState('');
   const [results, setResults] = useState([]);
   const [shelf, setShelf] = useState([]);
-  const [allResults, setAllResults] = useState([]);
+  
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if(searchInput === '') return;
+    const response = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=books+${searchInput}&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`
+    );
+    const data = await response.json();
+    setResults(data.items);
+  }
+
+
+
+
 
   const addToShelf = (result) => {
     const oldresult = [...shelf]
@@ -32,53 +48,53 @@ function App() {
     console.log(newresult)
   }
  
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=books+&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`
-      );
-      const data = await response.json();
-      console.log(data);
-      setAllResults(data.items);
-      setResults(data.items);
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     const response = await fetch(
+  //       `https://www.googleapis.com/books/v1/volumes?q=books+&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`
+  //     );
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setAllResults(data.items);
+  //     setResults(data.items);
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, []);
    
 
-  const handleSearchInput = async event => {
-    setSearchInput(event.target.value);
-    setIsLoading(true);
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${event.target.value}&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`);
-    const data = await response.json();
-    setAllResults(data.items);
-    setResults(data.items);
-    setIsLoading(false);
-  }
+  // const handleSearchInput = async event => {
+  //   setSearchInput(event.target.value);
+  //   setIsLoading(true);
+  //   const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${event.target.value}&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`);
+  //   const data = await response.json();
+  //   setAllResults(data.items);
+  //   setResults(data.items);
+  //   setIsLoading(false);
+  // }
 
 
     
-  useEffect(() => {
-   const filteredResults = allResults
-    .filter(result =>
-      result.volumeInfo.title.toLowerCase().includes(searchInput.toLowerCase())
-    )
-    .sort((a, b) => {
-      const titleA = a.volumeInfo.title.toLowerCase();
-      const titleB = b.volumeInfo.title.toLowerCase();
-      const search = searchInput.toLowerCase();
-      if (titleA.startsWith(search) && !titleB.startsWith(search)) {
-        return -1;
-      }
-      if (!titleA.startsWith(search) && titleB.startsWith(search)) {
-        return 1;
-      }
-      return 0;
-    });
-    setResults(filteredResults);
-  }, [searchInput, allResults]);
+  // useEffect(() => {
+  //  const filteredResults = allResults
+  //   .filter(result =>
+  //     result.volumeInfo.title.toLowerCase().includes(searchInput.toLowerCase())
+  //   )
+  //   .sort((a, b) => {
+  //     const titleA = a.volumeInfo.title.toLowerCase();
+  //     const titleB = b.volumeInfo.title.toLowerCase();
+  //     const search = searchInput.toLowerCase();
+  //     if (titleA.startsWith(search) && !titleB.startsWith(search)) {
+  //       return -1;
+  //     }
+  //     if (!titleA.startsWith(search) && titleB.startsWith(search)) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
+  //   setResults(filteredResults);
+  // }, [searchInput, allResults]);
 
 
   
@@ -102,7 +118,7 @@ function App() {
            {isAuthenticated && (
             <>
               <Route path="/shelf" element={<Shelf shelf={shelf} removeFromShelf ={ removeFromShelf} />} />
-              <Route path="/search" element={<Search results={results} searchInput={searchInput} handleSearchInput = {handleSearchInput}  isLoading = {isLoading} addToShelf={addToShelf}/>} />
+              <Route path="/search" element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToShelf={addToShelf}/>} />
             </>
            )}
           

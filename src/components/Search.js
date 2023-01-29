@@ -1,11 +1,11 @@
 import '../App.css';
 import {Link} from "react-router-dom"
 
-const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) => {
+const Search = ({addToShelf,results,isLoading, setSearchInput, handleSubmit, searchInput}) => {
 
   return (
     <div>
-        <form className="d-flex mt-4 justify-content-center mb-5">
+        <form className="d-flex mt-4 justify-content-center mb-5" onSubmit={handleSubmit}>
             <div className="form-group d-flex  col-9 m-2">
               <input
                 type="text"
@@ -13,7 +13,7 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
                 id="searchInput"
                 placeholder="Enter book name e.g harry potter"
                 value={searchInput}
-                onChange={handleSearchInput}
+                onChange={(event) => setSearchInput(event.target.value)}
               />
               <button className="btn btn-outline-warning">search</button>
             </div>
