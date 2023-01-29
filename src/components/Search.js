@@ -53,3 +53,4 @@ const Search = ({addToShelf,results,isLoading,handleSearchInput,searchInput}) =>
 
 export default Search;
 
+

@@ -1,7 +1,14 @@
-import {Link} from "react-router-dom"
+import {Link , useNavigate} from "react-router-dom"
 
-const Home = () => {
-
+const Home = ({setIsAuthenticated}) => {
+   const navigate = useNavigate()
+   const handleSubmit=(e)=>{
+       e.preventDefault()
+       navigate('/search')
+      console.log("go to home now")
+      setIsAuthenticated(true)
+    }
+    
 return (
   <div className="">
       <div className="jumbotron card">
@@ -15,7 +22,7 @@ return (
                 </div>
              <div className="card col-4 mt-4 justify-content-center">
                 <h4 className="ms-5 m-3 mt-4 fw-bolder">please sign In to continue</h4>
-                <form className="col-8  ms-5">
+                <form className="col-8  ms-5" onSubmit={handleSubmit} >
                     <div class="form-group mb-3">
                       <label for="username " className="mb-2 fw-bold">Username</label>
                       <input type="text" class="form-control" id="username" placeholder="Enter username"
@@ -26,9 +33,9 @@ return (
                       <input type="password" class="form-control" id="password" placeholder="Enter password" 
                       required/>
                     </div>
-                    <Link to ="/search">
-                      <button className="btn btn-outline-warning me-4 mb-4" > SIGN IN</button> 
-                    </Link>
+                  
+                      <button type="submit" className="btn btn-outline-warning me-4 mb-4"  > SIGN IN</button> 
+                  
                     <p className="fw-bold">Dont have account? 
                     <Link to="/register">
                       <button className="btn btn-outline-warning ms-3">sign up</button> 

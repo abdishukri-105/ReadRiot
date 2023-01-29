@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes , Route} from 'react-router-dom'
+import { Routes , Route, useNavigate} from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import NavBar from './NavBar';
@@ -15,6 +15,7 @@ function App() {
   const [shelf, setShelf] = useState([]);
   const [allResults, setAllResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const addToShelf = (result) => {
     const oldresult = [...shelf]
@@ -80,22 +81,35 @@ function App() {
   }, [searchInput, allResults]);
 
 
+  
+  const navigate = useNavigate()
 
+  const handleLogout = (e) => {
+    e.preventDefault()
+    setIsAuthenticated(false)
+    navigate('/')
+  }
 
   return (
     <div className="">
-      <BrowserRouter>
+      
     
-        <NavBar />
+        <NavBar isAuthenticated={isAuthenticated} handleLogout={handleLogout}  />
         
         <Routes>
-           <Route path="/" element={<Home />} />
-           <Route path="/Shelf" element={<Shelf shelf={shelf} removeFromShelf ={ removeFromShelf} />} />
-           <Route path="/search" element={<Search results={results} searchInput={searchInput} handleSearchInput = {handleSearchInput}  isLoading = {isLoading} addToShelf={addToShelf}/>} />
-           <Route path="/register" element={<Register />} />
+           <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated} />} />
+           <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}  />} />
+           {isAuthenticated && (
+            <>
+              <Route path="/shelf" element={<Shelf shelf={shelf} removeFromShelf ={ removeFromShelf} />} />
+              <Route path="/search" element={<Search results={results} searchInput={searchInput} handleSearchInput = {handleSearchInput}  isLoading = {isLoading} addToShelf={addToShelf}/>} />
+            </>
+           )}
+          
+          
         </Routes>
        
-      </BrowserRouter>
+   
       
     </div>
   );

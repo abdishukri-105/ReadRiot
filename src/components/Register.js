@@ -127,12 +127,15 @@
 // export default Register;
  
 import {Link} from "react-router-dom"
-const Register = () => {
+const Register = ({setIsAuthenticated}) => {
+   const handleSubmit=()=>{
+      setIsAuthenticated(true)
+    }
   return ( 
     <div className="container mt-5 ">
         <h2 className="ms-5 mt-5 text-center ">Sign up </h2>
         <div className="d-flex justify-content-center">
-           <form className="col-4  ms-5 " n>
+           <form className="col-4  ms-5 " onSubmit={handleSubmit}>
               <div class="form-group mb-3">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Enter username" required/>
