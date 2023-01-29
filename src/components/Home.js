@@ -16,7 +16,7 @@ return (
         <div className="card-img-overlay ">
             <div className="d-flex justify-content-around mt-5">
                <div className="mt-4 p-5 card  col-5">
-                 <p className="  fs-5 fw-bold" style={{lineHeight: "3rem" }}>
+                 <p className=" text-3xl  fs-5 fw-bold" style={{lineHeight: "3rem" }}>
                     Our app is built on the Google Books API, which means you have access to millions of books, including best sellers, classic literature, and new releases.
                  </p>
                 </div>

@@ -4,8 +4,9 @@ import {Link} from "react-router-dom"
 const Search = ({addToShelf,results,isLoading, setSearchInput, handleSubmit, searchInput}) => {
 
   return (
-    <div>
-        <form className="d-flex mt-4 justify-content-center mb-5" onSubmit={handleSubmit}>
+    <div className='bg-yellow-100 pt-3'>
+      
+        <form className="  d-flex  justify-content-center mb-3" onSubmit={handleSubmit}>
             <div className="form-group d-flex  col-9 m-2">
               <input
                 type="text"
@@ -15,32 +16,28 @@ const Search = ({addToShelf,results,isLoading, setSearchInput, handleSubmit, sea
                 value={searchInput}
                 onChange={(event) => setSearchInput(event.target.value)}
               />
-              <button className="btn btn-outline-warning">search</button>
+              <button className="btn btn-outline-dark">search</button>
             </div>
         </form>
-        <div className='container justify-content-center'>
+        <div className=''>
             {isLoading ? (
               <div>Loading...</div>
             ) : (
-            <div className=' card-section ms-4 row   card-section '>
+            <div className=' grid grid-cols-5 gap-2 mr-5 ml-7  '>
              {results.map((result) => (
-              <div key={result.id}  className= "card book-holder mb-5 me-4 bg-warning"  >
+              <div key={result.id}  className= " p-2 relative w-56 max-w-sm rounded overflow-hidden shadow-lg bg-amber-400"  >
                       {result.volumeInfo.imageLinks && (
-                      <img src={result.volumeInfo.imageLinks.smallThumbnail  } alt={result.volumeInfo.title} className="card-img-top card-image img-fluid"  />
+                      <img src={result.volumeInfo.imageLinks.smallThumbnail  } alt={result.volumeInfo.title} className="w-56 rounded-xl h-64  transform hover:scale-105 transition duration-150 ease-in-out"  />
                     )}
-                  <div className='card-body '>
-                    <div className="d-flex justify-content-between">
-                      <h6 className='card-title fw-bold'>{result.volumeInfo.title}</h6>
-                      {/* <p className="badge  bg-dark text-light"> pages: {result.volumeInfo.pageCount}</p> */}
-                     </div>
-                      <p className='card-text'> { result.volumeInfo.authors}</p>
-                      {/* <p className='card-text'> {result.searchInfo.textSnippet}</p> */}
-                      <div className=' d-flex justify-content-between'>
-                        <a className=' btn btn-outline-dark' target='_blank' href={result.volumeInfo.previewLink}>see more</a>
+                  <div className=' p-1'>
+                      <h6 className='font-bold p-1'>{result.volumeInfo.title}</h6>
+                      <p className='py-1'> { result.volumeInfo.authors}</p>
+                      <div className=' d-flex justify-between '>
+                        <a className='inline-block px-1 py-1 bg-yellow-700 text-white  font-medium text-xs leading-tight uppercase rounded hover:bg-yellow-600  hover:text-black' target='_blank' href={result.volumeInfo.previewLink}>see more</a>
                         <Link to="/shelf">
-                          <button className=' btn btn-outline-dark' onClick={() => addToShelf(result)}>add to shelf</button>
+                          <button type = "button" className='inline-block px-3 py-1 bg-yellow-700 text-white  font-medium text-xs leading-tight uppercase rounded hover:bg-yellow-600  hover:text-black' onClick={() => addToShelf(result)}>add to shelf</button>
                         </Link>
-                       </div>
+                      </div>
                     </div>
                 </div>
                ))}
