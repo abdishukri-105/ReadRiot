@@ -5,8 +5,9 @@ const Search = ({addToShelf,results,isLoading, setSearchInput, handleSubmit, sea
 
   return (
     <div className='bg-yellow-100 pt-3'>
-      
+          <h1 className='text-center text-xl font-bold'>search for your favourite books here</h1>
         <form className="  d-flex  justify-content-center mb-3" onSubmit={handleSubmit}>
+        
             <div className="form-group d-flex  col-9 m-2">
               <input
                 type="text"

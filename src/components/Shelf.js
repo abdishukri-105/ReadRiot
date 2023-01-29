@@ -22,7 +22,7 @@ const Shelf = ({shelf, removeFromShelf}) => {
               </div>
               ))
              ) : (
-            <h2 className="fw-bold text-center mt-4">You don't have any books here.</h2>
+            <h5 className="font-bold  uppercase ">You don't have any books.</h5>
           )}
     </div>
       
