@@ -13,7 +13,7 @@ const NavBar = ({isAuthenticated, handleLogout}) => {
               <>
                 <Link to="/search"  exact className="nav-link me-5">Search</Link>
                 <Link to="/shelf"  exact className="nav-link me-5">Shelf</Link>
-                <Link  onClick={handleLogout}  exact className="nav-link">logout</Link>
+                <Link  onClick={handleLogout}  exact className="nav-link">Logout</Link>
               </>
             ):(
               <Link to="/register" className="nav-link">Register</Link>

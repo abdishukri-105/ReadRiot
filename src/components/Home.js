@@ -36,7 +36,7 @@ return (
                   
                       <button type="submit" className="btn btn-outline-warning me-4 mb-4"  > SIGN IN</button> 
                   
-                    <p className="fw-bold">Dont have account? 
+                    <p className="fw-bold">Don't have account? 
                     <Link to="/register">
                       <button className="btn btn-outline-warning ms-3">sign up</button> 
                     </Link>

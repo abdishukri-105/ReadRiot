@@ -1,7 +1,7 @@
  # <center> READRIOT</center>
 ReadRiot is a react app that consumes the Google Books API, allowing users to search for books, view detailed information about them, and save their favorite books to their personal library.
 
-The app requiers users to login/register  first before seeing any books.
+The app requires users to login/register  first before seeing any books.
 
 ## Table of contents
 
@@ -86,7 +86,8 @@ run the app (on a different terminal )
 
 - linkedIn - [@abdishukri-mohamed](https://www.linkedin.com/in/abdishukri-mohamed/)
 
-- linkedIn - [@lawrence](")
+- linkedIn - [@lawrence-kimani](")
+- email - [lawrencekimani18@gmail.com]
 
 - linkedIn - [@victor](")
 
